@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kv-mapper-fit"
+version = "0.1.0"
+description = "Calibration + fitting toolkit for cross-model KV cache transfer within LLM families (closed-form ridge mapping, arXiv:2608.03893)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "torch>=2.1",
+    "transformers>=4.46",
+    "safetensors>=0.4",
+    "numpy>=1.24",
+    "tqdm>=4.60",
+]
+
+[project.optional-dependencies]
+data = ["datasets>=2.19"]
+plots = ["matplotlib>=3.7"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+kv-mapper-fit = "kv_mapper_fit.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["kv_mapper_fit*"]
